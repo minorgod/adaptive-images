@@ -1,6 +1,6 @@
 * text=auto !eol
-/adaptive-images-for-wordpress.php -text
-adaptive-images/adaptive-images.php -text
-/ai-cookie.php -text
+/adaptive-images.php -text
+adaptive-images/ai-cookie.php -text
+adaptive-images/ai-main.php -text
 /index.php -text
 /readme.txt -text
