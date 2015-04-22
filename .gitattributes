@@ -3,6 +3,7 @@
 adaptive-images/ai-cookie.php -text
 adaptive-images/ai-main.php -text
 adaptive-images/ai-user-settings.php -text
+adaptive-images/readme-too.txt -text
 /index.php -text
 /readme.txt -text
 /todo.txt -text
