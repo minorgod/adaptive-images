@@ -1,4 +1,10 @@
 * text=auto !eol
+/adaptive-images-actions.php -text
+/adaptive-images-admin.php -text
+/adaptive-images-front.php -text
+/adaptive-images-init.php -text
+/adaptive-images-plugin.php -text
+/adaptive-images-upgrade.php -text
 /adaptive-images.php -text
 adaptive-images/ai-cookie.php -text
 adaptive-images/ai-main.php -text
@@ -7,3 +13,4 @@ adaptive-images/readme-too.txt -text
 /index.php -text
 /readme.txt -text
 /todo.txt -text
+/uninstall.php -text
