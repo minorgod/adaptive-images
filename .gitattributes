@@ -5,6 +5,7 @@
 /adaptive-images-front.php -text
 /adaptive-images-init.php -text
 /adaptive-images-plugin.php -text
+/adaptive-images-script.php -text
 /adaptive-images-upgrade.php -text
 /adaptive-images.php -text
 adaptive-images/ai-cookie.php -text
@@ -12,6 +13,8 @@ adaptive-images/ai-main.php -text
 adaptive-images/ai-user-settings.php -text
 adaptive-images/readme-too.txt -text
 /index.php -text
+/license-gpl.txt -text
 /readme.txt -text
 /todo.txt -text
 /uninstall.php -text
+/user-settings.php -text
