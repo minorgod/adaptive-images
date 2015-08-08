@@ -8,10 +8,6 @@
 /adaptive-images-script.php -text
 /adaptive-images-upgrade.php -text
 /adaptive-images.php -text
-adaptive-images/ai-cookie.php -text
-adaptive-images/ai-main.php -text
-adaptive-images/ai-user-settings.php -text
-adaptive-images/readme-too.txt -text
 /index.php -text
 /license-gpl.txt -text
 /readme.txt -text
