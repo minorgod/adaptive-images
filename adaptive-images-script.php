@@ -65,9 +65,8 @@
             // Resolve paths of necessary directories.
 
             $wp_content     = realpath( dirname( $_SERVER['SCRIPT_FILENAME'] ) . '/../../' );
-            $requested_uri  = parse_url( urldecode( $_SERVER['REQUEST_URI']), PHP_URL_PATH );
-            $requested_file = basename( $requested_uri );
-            $source_file    = $_SERVER['DOCUMENT_ROOT'] . $requested_uri;
+            $requested_uri  = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+            $source_file    = dirname( dirname( dirname( __DIR__ ) ) ) . $requested_uri;
             $resolution     = FALSE;
 
 
@@ -169,6 +168,7 @@
             );
 
         }
+
 
         return $_REQUEST['adaptive-images-settings'];
 
@@ -317,7 +317,7 @@
 
                 Add "?debug=original" to see the original, non-resized image. 
 
-                Add "?resolution=xxxx,y" to see the image resized in XXX pixels and y pixel density. 
+                Add "?resolution=xxxx,y" to see the image resized in xxxx pixels and y pixel density. 
 
             </body>
 
