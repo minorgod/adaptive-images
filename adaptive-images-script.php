@@ -64,9 +64,15 @@
 
             // Resolve paths of necessary directories.
 
-            $wp_content     = realpath( dirname( $_SERVER['SCRIPT_FILENAME'] ) . '/../../' );
-            $requested_uri  = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
-            $source_file    = dirname( dirname( dirname( __DIR__ ) ) ) . $requested_uri;
+            $wp_content = realpath( dirname( $_SERVER['SCRIPT_FILENAME'] ) . '/../../' );
+
+            // Resolve the path of the image file based on the /wp-content path and the request URI.
+
+            $requested_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+            $index = strpos( $requested_uri, '/wp-content' );
+            $index += strlen( '/wp-content' );
+            $source_file = $wp_content . substr( $requested_uri, $index );
+
             $resolution     = FALSE;
 
 
