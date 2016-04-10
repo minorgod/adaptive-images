@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: adaptive images, responsive images, mobile images, resize images, optimize images, adaptive, responsive, mobile, resize, optimize, images
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 0.6.42
+Stable tag: 0.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -199,28 +199,32 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 == Changelog ==
 
+= 0.6.5 =
+
+ - PHP warning in adaptive images script removed.
+
 = 0.6.42 =
 
-- Minor bug fix when saving plugin settings.
+ - Minor bug fix when saving plugin settings.
 
 = 0.6.41 =
 
-- Version 0.6.4 bug fix caused a new bug in image path resolution when the WordPress is installed in a subdirectory of 
+ - Version 0.6.4 bug fix caused a new bug in image path resolution when the WordPress is installed in a subdirectory of 
   the server root directory.
 
 = 0.6.4 =
 
-- Fixed bug wp-content dir resolution within the standalone Adaptive Images image handling scrips, where sometimes the
+ - Fixed bug wp-content dir resolution within the standalone Adaptive Images image handling scrips, where sometimes the
   server document root was not reported by PHP as being the same as the WordPress installation path. 
 
 = 0.6.3 =
 
-- Fixed bug in htaccess rewrite rules generation when installation is not in root directory.
-- Fixed bug in image delivery script where browser cache was not set correctly in some case.
+ - Fixed bug in htaccess rewrite rules generation when installation is not in root directory.
+ - Fixed bug in image delivery script where browser cache was not set correctly in some case.
 
 = 0.6.2 =
 
-Fixed bug where WordPress installation root directory was not calculated correctly in certain cases.
+ - Fixed bug where WordPress installation root directory was not calculated correctly in certain cases.
 
 = 0.6.1 =
 

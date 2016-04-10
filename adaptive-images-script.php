@@ -73,7 +73,7 @@
             $index += strlen( '/wp-content' );
             $source_file = $wp_content . substr( $requested_uri, $index );
 
-            $resolution     = FALSE;
+            $resolution = FALSE;
 
 
 
@@ -83,10 +83,14 @@
                 
                 $cookie_resolution = $_GET['resolution'];
 
-            } else {
+            } else if ( isset( $_COOKIE['resolution'] ) ) { 
 
                 $cookie_resolution = $_COOKIE['resolution'];
-                
+
+            } else {
+
+                $cookie_resolution = null;
+
             }
 
 
