@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: adaptive images, responsive images, mobile images, resize images, optimize images, adaptive, responsive, mobile, resize, optimize, images
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 0.6.5
+Stable tag: 0.6.51
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -198,6 +198,11 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 
 == Changelog ==
+
+= 0.6.51 =
+
+ - Just an update to the plugin version, because 0.6.41 was coming before 0.6.5, due to a lexicographical sorting and 
+   was not available as an update in the repository!
 
 = 0.6.5 =
 

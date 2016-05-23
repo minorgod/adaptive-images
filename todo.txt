@@ -91,6 +91,9 @@
     NEXT
     ====
 
+    - TIPNG AS A SERVICE FOR PNGs
+      https://tinypng.com/developers
+
     - WP Multisite
 
     - CDN/VARNISH SUPPORT
