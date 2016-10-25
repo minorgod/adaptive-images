@@ -98,6 +98,7 @@ specified breakpoints!
  - Cannot work with installations where the `/wp-content` directory is not in its default position, which is inside the 
    root directory of the WordPress installation, along with `/wp-admin` and `/wp-includes`.
  - The plugin supports Nginx, but it must be manually configured.
+ - Windows IIS is not supported, but could be manually configured.
 
  = Stuff to keep in mind = 
 
@@ -121,6 +122,8 @@ specified breakpoints!
    solution specially adapted for WordPress.
  - Many-many thanks to "railgunner" for the initial idea in the forum and to the Pressidium team for helping with 
    debugging the CDN/Varnish/external caching service feature.
+ - Also, many thanks to my good friend and colleague Antonis Zachopoulos for the countless times that he provided ideas
+   and debugging hints.
 
 Thank you for using the plugin and, please, do let us know how it works (or doesn't work) for you. We love comments 
 and creative feedback!
