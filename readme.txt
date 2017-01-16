@@ -97,7 +97,10 @@ specified breakpoints!
 
  - Cannot work with installations where the `/wp-content` directory is not in its default position, which is inside the 
    root directory of the WordPress installation, along with `/wp-admin` and `/wp-includes`.
- - The plugin supports Nginx, but it must be manually configured.
+ - The plugin supports Nginx, but it must be manually configured like this:
+  ```location / {
+    rewrite \.(?:jpe?g|gif|png)$ /wp-content/plugins/adaptive-images/adaptive-images-script.php;
+  }```
  - Windows IIS is not supported, but could be manually configured.
 
  = Stuff to keep in mind = 
