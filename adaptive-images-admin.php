@@ -1099,6 +1099,19 @@
 
 
 
+        // Add NginX configuration info.
+
+        $message .= 
+            '<p>' . 
+                '--<br />' . 
+                'If you are using NginX, you probably need this bit of code in your configuration file:' .
+            '</p>' .
+            '<pre>' .
+                adaptive_images_actions_nginx_get_block() .
+            '</pre>';
+
+
+
         // Inform user accordingly. 
         
         add_settings_error( 

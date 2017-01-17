@@ -195,6 +195,29 @@
 
 
     /**
+     * Creates a snippet of NginX configuration which must be added manually.
+     * 
+     * @author Nevma (info@nevma.gr)
+     * 
+     * @return string The adaptive images plugin .htaccess rewrite block.
+     */
+
+    function adaptive_images_actions_nginx_get_block () {
+
+        // Create the NginX rewrite  block part.
+
+        $nginx_rewrite_block = 
+            'location / {' . "\n" .
+            '    rewrite \.(?:jpe?g|gif|png)$ /wp-content/plugins/adaptive-images/adaptive-images-script.php;' . "\n" .
+            '}';
+
+        return $nginx_rewrite_block;
+
+    }
+
+
+
+    /**
      * Updates the htacces file by adding the adaptive images rewrite block.
      * 
      * @author Nevma (info@nevma.gr)

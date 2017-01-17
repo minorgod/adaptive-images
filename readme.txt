@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: adaptive images, responsive images, mobile images, resize images, optimize images, adaptive, responsive, mobile, resize, optimize, images
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 0.6.60
+Stable tag: 0.6.61
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,8 +42,8 @@ render them.
 
 = Supported formats =
 
- - JPEG (adjustable quality)
- - PNG (is transformed to PNG8)
+ - JPEG
+ - PNG
  - GIF (not animated)
 
 = CDN/Varnish/external caching service support =
@@ -204,6 +204,11 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 
 == Changelog ==
+
+= 0.6.61 =
+
+ - Added notice for NginX's manual configuration.
+ - Minor bug fixes.
 
 = 0.6.60 =
 
