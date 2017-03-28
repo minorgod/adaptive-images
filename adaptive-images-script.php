@@ -21,6 +21,34 @@
 
 
     /**
+     * Calculates the current full requested url path, that is the full url 
+     * without the GET parameters and the HTML fragment identifier.
+     * 
+     * @param boolean $use_forwarded_host Whether to check for a requested host
+     *                                    set by a caching server or CDN and use
+     *                                    it instead.
+     * 
+     * @return string The current full requested url path.
+     */
+
+    function adaptive_images_script_get_url ( $use_forwarded_host=false ) {
+
+        $ssl         = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' );
+        $protocol    = strtolower( $_SERVER['SERVER_PROTOCOL'] );
+        $protocol    = substr( $protocol, 0, strpos( $protocol, '/' ) ) . ( ( $ssl ) ? 's' : '' );
+        $port        = $_SERVER['SERVER_PORT'];
+        $port        = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':' . $port;
+        $host        = ( $use_forwarded_host && isset( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : ( isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : null );
+        $host        = isset( $host ) ? $host : $_SERVER['SERVER_NAME'] . $port;
+        $request_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+
+        return $protocol . '://' . $host . $request_uri;
+
+    }
+
+
+
+    /**
      * Retrieves the settings required for this script to run.
      * 
      * @author Nevma (info@nevma.gr)
@@ -34,23 +62,28 @@
 
         if ( ! isset( $_REQUEST['adaptive-images-settings'] ) ) {
 
+            $current_directory  = dirname( $_SERVER['SCRIPT_FILENAME'] );
+
+
+
             // Default script settings which are set in the plugin settings page.
 
-            $resolutions   = array( 1024, 600, 480 );
-            $landscape     = TRUE;
-            $hidpi         = TRUE;
-            $cache_dir     = "cache/adaptive-images";
-            $jpg_quality   = 65;
-            $png8          = FALSE;
-            $sharpen       = TRUE;
-            $watch_cache   = TRUE;
-            $browser_cache = 60*60*24*7;
+            $resolutions    = array( 1024, 600, 480 );
+            $landscape      = TRUE;
+            $hidpi          = TRUE;
+            $wp_content_dir = realpath( $current_directory . '/../../' );
+            $wp_content_url = 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content';
+            $cache_dir      = "cache/adaptive-images";
+            $jpg_quality    = 65;
+            $png8           = FALSE;
+            $sharpen        = TRUE;
+            $watch_cache    = TRUE;
+            $browser_cache  = 60*60*24*7;
 
 
 
             // Check if user settings from the WordPress admin exist.
 
-            $current_directory  = dirname( $_SERVER['SCRIPT_FILENAME'] );
             $user_settings_file = realpath( $current_directory . '/user-settings.php' );
 
             if ( file_exists( $user_settings_file ) ) {
@@ -63,18 +96,10 @@
 
 
 
-            // Resolve paths of necessary directories.
-
-            $wp_content = realpath( dirname( $_SERVER['SCRIPT_FILENAME'] ) . '/../../' );
-
-            // Resolve the path of the image file based on the /wp-content path and the request URI.
-
-            $requested_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
-            $index = strpos( $requested_uri, '/wp-content' );
-            $index += strlen( '/wp-content' );
-            $source_file = $wp_content . substr( $requested_uri, $index );
-
-            $resolution = FALSE;
+            // Resolve original requested image path on disk. 
+            
+            $request_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+            $source_file = str_ireplace( $wp_content_url, $wp_content_dir, adaptive_images_script_get_url() );
 
 
 
@@ -101,7 +126,7 @@
             $client_width  = $resolutions[0];
             $pixel_density = 1;
 
-            if ( ! isset( $cookie_resolution ) || isset( $cookie_resolution ) && ! preg_match( "/^[0-9]+[,]+[0-9]+$/", $cookie_resolution ) ) { 
+            if ( ! isset( $cookie_resolution ) || isset( $cookie_resolution ) && ! preg_match( "/^[\d]+[,]+[\d]+[\.]?[\d]*$/", $cookie_resolution ) ) { 
 
                 // Delete cookie if not valid, so that the default image is used.
 
@@ -170,9 +195,9 @@
                 'sharpen'        => $sharpen,
                 'watch_cache'    => $watch_cache,
                 'browser_cache'  => $browser_cache,
-                'requested_uri'  => $requested_uri,
+                'request_uri'    => $request_uri,
                 'source_file'    => $source_file,
-                'wp_content'     => $wp_content,
+                'wp_content'     => $wp_content_dir,
                 'client_width'   => $client_width,
                 'hidpi'          => $hidpi,
                 'pixel_density'  => $pixel_density,
@@ -303,7 +328,7 @@
                 <table><tbody>
                     <tr>
                         <td>Image</td>
-                        <td><?php echo $settings['requested_uri']; ?></td>
+                        <td><?php echo $settings['request_uri']; ?></td>
                     </tr>
                     <tr>
                         <td>Exists</td>
@@ -941,7 +966,7 @@
 
     // Locate cached image.
 
-    $cache_file = $settings['wp_content'] . '/' . $settings['cache_dir'] . '/' . $settings['resolution'] . $settings['requested_uri'];
+    $cache_file = $settings['wp_content'] . '/' . $settings['cache_dir'] . '/' . $settings['resolution'] . $settings['request_uri'];
 
 
 

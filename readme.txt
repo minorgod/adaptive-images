@@ -6,7 +6,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: adaptive images, responsive images, mobile images, resize images, optimize images, adaptive, responsive, mobile, resize, optimize, images
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 0.6.61
+Stable tag: 0.6.62
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -183,6 +183,11 @@ their server resources.
 
 == Upgrade Notice ==
 
+= 0.6.62 =
+
+It is recommended for users to save one&apos;s settings anew, especially if their installation is in a subdirectory or
+if they have renamed their wp-content or uploads directory.
+
 = 0.5.0 =
 
 It is recommended, but not absolutely necessary, to save one&apos;s settings anew, due to the big changes in the image 
@@ -204,6 +209,13 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 
 == Changelog ==
+
+= 0.6.62 =
+
+ - Bug fix handling decimal device pixel density.
+ - Bug fix when the wp-content and/or uploads directories have been renamed.
+ - Bug fix when WordPress installation is in a subdirectory, but the website url remains in the root directory.
+ - Settings page user interface corrections.
 
 = 0.6.61 =
 
