@@ -53,7 +53,8 @@ mode. This mode is experimental in the following ways: i) it is not thorougly te
 almost all test cases so far iii) it bears no dangers to your isntallation iv) it adds a special url parameter to your 
 image urls, so it is slightly obtrusive.
 
-Tested with MaxCDN and Varnish up to now.
+Cannot work, not even in experimental mode, with CDNs which use a different subdomain for images, because these setups
+completely bypass WordPress when delivering images. Feel free to ask for details on this in the support forum.
 
 = Default breakpoints =
 
@@ -100,6 +101,9 @@ specified breakpoints!
        rewrite \.(?:jpe?g|gif|png)$ /wp-content/plugins/adaptive-images/adaptive-images-script.php;
    }`
  - Windows IIS is not supported, but could be manually configured. Any IIS experts are welcome to contribute.
+ - Cannot work, not even in experimental mode, with CDNs which use a different subdomain for images. 
+ - When using HTTPS/SSL make sure that you update all your website urls and also the urls in your WordPress General
+   settings page, otherwise the plugin will not be able to locate your images. 
 
  = Stuff to keep in mind = 
 
