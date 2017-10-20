@@ -10,8 +10,7 @@ Stable tag: 0.6.63
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adaptive images plugin transparently resizes your images, per device screen size, in order to reduce download times in 
-mobile environments. 
+Adaptive images plugin transparently resizes your images, per device screen size, in order to reduce download times in mobile environments. 
 
 
 
@@ -32,8 +31,7 @@ Note that this is not a CSS responsive images solution. This plugin does not for
  = Side benefits =
 
  1. Respects search engines and sends them the orginal version of each image, because it depends on Javascript.
- 2. If it does not recognise a device screen it falls over to the original image size. But even this is very rare and 
-    mostly refers to very old or possibly deprecated devices. 
+ 2. If it does not recognise a device screen it falls over to the original image size. But even this is very rare and mostly refers to very old or possibly deprecated devices. 
  3. Does not need to load the WordPress ennironment in order to resize and compress images.
 
 = Supported formats =
@@ -61,8 +59,7 @@ HiDPI (high device pixel density or retina) screens are supported too.
 = How to test = 
 
  1. Test with Chrome&apos;s device emulation mode https://developer.chrome.com/devtools/docs/device-mode in Developer Tools. See here https://www.youtube.com/watch?v=hCAC1XUUOvw/ for an example. Unfortunately, Firefox&apos;s Responsive Design Mode does not actually emulate a mobile screen size!
- 2. Test with a tool like Webpagetest http://www.webpagetest.org/. Make sure you set the "Emulate Mobile Browser" 
-    setting in the "Advanced Settings" > "Chrome" tab. 
+ 2. Test with a tool like Webpagetest http://www.webpagetest.org/. Make sure you set the "Emulate Mobile Browser" setting in the "Advanced Settings" > "Chrome" tab. 
  3. Test with a tool like GTmetrix http://gtmetrix.com/. Make sure you enable mobile device testing. The plugin will have no effect on desktop sized devices.
  4. Test with an actual mobile device, a smartphone or tablet. Watch your website load in a snap.
  5. Check the `/wp-contents/cache` directory to see the `/adaptive-images` directory and its contents. This is where the resized images are kept and cached by default.
@@ -78,9 +75,11 @@ You could test with a normal desktop browser, but only if the computer screen si
 = Incompatibilities and issues = 
 
  - The plugin supports Nginx, but the server's configuration file must be manually configured like this:
-   `location / {
-       rewrite \.(?:jpe?g|gif|png)$ /wp-content/plugins/adaptive-images/adaptive-images-script.php;
-   }`
+
+```location / {
+    rewrite \.(?:jpe?g|gif|png)$ /wp-content/plugins/adaptive-images/adaptive-images-script.php;
+}```
+
  - Windows IIS is not supported, but could be manually configured. Any IIS experts are welcome to contribute.
  - Cannot work, not even in experimental mode, with CDNs which use a different subdomain for images. 
  - When using HTTPS/SSL make sure that you update all your website urls and also the urls in your WordPress General
@@ -90,8 +89,7 @@ You could test with a normal desktop browser, but only if the computer screen si
 
  - The plugin needs to add a little bit of code to your `.htaccess` file in order to function properly. It removes this code once disabled. If you are not cool with that, then&hellip; tough luck! 
  - The plugin does not care whether the device is actually mobile or not. It checks the device screen resolution. If you have set your breakpoints big enough then it should work just as good for desktop devices as well. However it targets mostly the mobile ones.
- - The resized versions of the pictures are kept in a special directory in the `/wp-content/cache` directory. This causes some storage overhead. It is up to you to judge whether this overhead is a sustainable option in your 
-   hosting environment.
+ - The resized versions of the pictures are kept in a special directory in the `/wp-content/cache` directory. This causes some storage overhead. It is up to you to judge whether this overhead is a sustainable option in your hosting environment.
  - The plugin does not help with (nor hinder) art direction. Simple as that. Art direction https://usecases.responsiveimages.org/#art-direction in responsive images is an entirely different, yet important, problem. This plugin does not tackle with it. But it works in a supplementary way without interfering with other solutions that do. This means that you can combine it with any art direction solution.
 
 = Credits = 
@@ -152,26 +150,20 @@ Until this bug is fixed, please make sure that the protocol mentioned in the url
 
 = 0.6.62 =
 
-It is recommended for users to save one&apos;s settings anew, especially if their installation is in a subdirectory or
-if they have renamed their wp-content or uploads directory.
+It is recommended for users to save one&apos;s settings anew, especially if their installation is in a subdirectory or if they have renamed their wp-content or uploads directory.
 
 = 0.5.0 =
 
-It is recommended, but not absolutely necessary, to save one&apos;s settings anew, due to the big changes in the image 
-resizing script, which was completely re-written, renamed and relocated inside the plugin&apos;s directories since this 
-version. 
+It is recommended, but not absolutely necessary, to save one&apos;s settings anew, due to the big changes in the image resizing script, which was completely re-written, renamed and relocated inside the plugin&apos;s directories since this version. 
 
 = 0.3.0 =
 
 Ater upgrading to version 0.3.0 you will need to:
 
- - Save your settings anew. If you do not then the plugin will operate with its current default settings without 
-   problems as it is expected.
- - Manually delete the old image cache directory `/wp-content/cache-ai`. The new default image cache directory is
-   `/wp-content/cache/adaptive-images`.
+ - Save your settings anew. If you do not then the plugin will operate with its current default settings without problems as it is expected.
+ - Manually delete the old image cache directory `/wp-content/cache-ai`. The new default image cache directory is `/wp-content/cache/adaptive-images`.
 
-Apologies for the inconvenience! We are still in early versions. What is important is that the plugin actually works 
-as intended. We try to minimize the hassle between these versions. This is not expected to happen pretty often.
+Apologies for the inconvenience! We are still in early versions. What is important is that the plugin actually works as intended. We try to minimize the hassle between these versions. This is not expected to happen pretty often.
 
 
 
@@ -196,15 +188,11 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 = 0.6.60 =
 
- - Removed PNG8 compression for PNGs because it was not peoducing acceptable quality results. PNGs are now simply
-   resized and compressed via normal 32bit PNG compression. In future versions there will be an option to enable and
-   disable PNG8 compression at will and perhaps a way for the plugin to detect in which images it should apply PNG8
-   compression and in which others to apply 32bit PNG compression.
+ - Removed PNG8 compression for PNGs because it was not peoducing acceptable quality results. PNGs are now simply resized and compressed via normal 32bit PNG compression. In future versions there will be an option to enable and disable PNG8 compression at will and perhaps a way for the plugin to detect in which images it should apply PNG8 compression and in which others to apply 32bit PNG compression.
 
 = 0.6.51 =
 
- - Just an update to the plugin version, because 0.6.41 was coming before 0.6.5, due to a lexicographical sorting and 
-   was not available as an update in the repository!
+ - Just an update to the plugin version, because 0.6.41 was coming before 0.6.5, due to a lexicographical sorting and was not available as an update in the repository!
 
 = 0.6.5 =
 
@@ -216,13 +204,11 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 = 0.6.41 =
 
- - Version 0.6.4 bug fix caused a new bug in image path resolution when the WordPress is installed in a subdirectory of 
-  the server root directory.
+ - Version 0.6.4 bug fix caused a new bug in image path resolution when the WordPress is installed in a subdirectory of the server root directory.
 
 = 0.6.4 =
 
- - Fixed bug wp-content dir resolution within the standalone Adaptive Images image handling scrips, where sometimes the
-  server document root was not reported by PHP as being the same as the WordPress installation path. 
+ - Fixed bug wp-content dir resolution within the standalone Adaptive Images image handling scrips, where sometimes the server document root was not reported by PHP as being the same as the WordPress installation path. 
 
 = 0.6.3 =
 
@@ -235,9 +221,7 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 = 0.6.1 =
 
-CDN/Varnish compatibility improved. Previously some images were downloaded in both their original and their resized 
-version. Now they are only downloaded once. However if the website is too fast there may be 1-2 images that might 
-manage to download in their original size. We guess that is OK, though.
+CDN/Varnish compatibility improved. Previously some images were downloaded in both their original and their resized version. Now they are only downloaded once. However if the website is too fast there may be 1-2 images that might manage to download in their original size. We guess that is OK, though.
 
 = 0.6.0 =
 
@@ -257,24 +241,16 @@ manage to download in their original size. We guess that is OK, though.
 
 = 0.5.0 =
 
- - New option in settings to define whether the plugin should use the bigger dimension of a device as its with or take 
-   into account the current orientation. Up to now the plugin used the width of the landscape orientation, which is the 
-   biggest of each device&apos;s dimensions.
- - New option in settings to define whether the plugin should use take special care for HiDPI (retina, high pixel 
-   density screens and serve these devices better quality images according to their pixel density.
- - Better PNG compression via PNG8. This converts true color PNG images to palette image, which reduces colours and the 
-   alpha channel Kudos http://stackoverflow.com/questions/5752514/how-to-convert-png-to-8-bit-png-using-php-gd-library/.
+ - New option in settings to define whether the plugin should use the bigger dimension of a device as its with or take into account the current orientation. Up to now the plugin used the width of the landscape orientation, which is the biggest of each device&apos;s dimensions.
+ - New option in settings to define whether the plugin should use take special care for HiDPI (retina, high pixel density screens and serve these devices better quality images according to their pixel density.
+ - Better PNG compression via PNG8. This converts true color PNG images to palette image, which reduces colours and the alpha channel Kudos http://stackoverflow.com/questions/5752514/how-to-convert-png-to-8-bit-png-using-php-gd-library/.
  - Fixed some edge cases of not being able to serve a resized image by reverting to original image. 
  - More analytical settings page debugging and diagnostics.
  - Added debugging methods in the image cache generation script.
  - Plugin can be configured to respect your default expires headers.
  - Some documentation stuff (as always).
- - Completely rewritten the script that generates and caches the resized versions of images in order to avoid the GPL 
-   vs CC-BY-3.0 licensing incompatibility of the original Adaptive Images script (http://adaptive-images.com/). Plugin 
-   is now totally independant and free of any licensing issues.
- - Due to the above, the image resizing script is no longer the same, it has been transformed to a new script, named 
-   `adaptive-images-script.php` which is in the root folder of the plugin. However the old script is still left inside 
-   the plugin folders for compatibility purposes (old versions and users not having saved their settings anew).
+ - Completely rewritten the script that generates and caches the resized versions of images in order to avoid the GPL vs CC-BY-3.0 licensing incompatibility of the original Adaptive Images script (http://adaptive-images.com/). Plugin is now totally independant and free of any licensing issues.
+ - Due to the above, the image resizing script is no longer the same, it has been transformed to a new script, named `adaptive-images-script.php` which is in the root folder of the plugin. However the old script is still left inside the plugin folders for compatibility purposes (old versions and users not having saved their settings anew).
 
 = 0.3.52 =
 
@@ -305,8 +281,7 @@ manage to download in their original size. We guess that is OK, though.
 
 = 0.3.02 =
 
- - When no device size/resolution is detected then show the original image. Helps avoid misunderstandings and sends 
-   search engines the actual images instead of the resized ones.
+ - When no device size/resolution is detected then show the original image. Helps avoid misunderstandings and sends search engines the actual images instead of the resized ones.
 
 = 0.3.01 =
 
@@ -321,11 +296,8 @@ manage to download in their original size. We guess that is OK, though.
  - Added action in the settings page for cache size calculation.
  - Added watched directories field in the settings page anew.
  - Divided the plugin files into logical parts.
- - Default resolutions changed to 1024, 640 and 480 because the cookie is set based on the max value between screen 
-   width and height and most screens have a height between 480 and 640px. Tablets are between 640 and 1024px wide/tall.
-   The iPad is 1024px tall. A screen with a width higher than 1024px is probably not a mobile screen.
- - Changed default image cache directory in order to place it inside the expected WordPress `/wp-content/cache`
-   directory, so now by default it is `/wp-content/cache/adaptive-images`.
+ - Default resolutions changed to 1024, 640 and 480 because the cookie is set based on the max value between screen width and height and most screens have a height between 480 and 640px. Tablets are between 640 and 1024px wide/tall. The iPad is 1024px tall. A screen with a width higher than 1024px is probably not a mobile screen.
+ - Changed default image cache directory in order to place it inside the expected WordPress `/wp-content/cache` directory, so now by default it is `/wp-content/cache/adaptive-images`.
  - Added check for the plugin options.
  - Added check for the PHP GD library.
  - Added check for the .htaccess file.
@@ -347,8 +319,7 @@ manage to download in their original size. We guess that is OK, though.
 
 = 0.2.05 =
 
- - If the original requested image width and the device screen size are bigger than maximum available breakpoint, then 
-   serve the the original image. 
+ - If the original requested image width and the device screen size are bigger than maximum available breakpoint, then serve the the original image. 
 
 = 0.2.04 =
 
