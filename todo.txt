@@ -29,12 +29,12 @@
         - LOSSLESS PNG
         - PNG2JPG
 
-      Kraken, 
-      EWWW, 
-      Smushit, 
+      Kraken,
+      EWWW,
+      Smushit,
       TinyJPG,
       TinyPNG,
-      ShortPixel, 
+      ShortPixel,
       Prizm,      => require API key
       EWWW,       => requires API key for JPEGs
       Imsanity,   => has no support for true batch compression
@@ -100,13 +100,13 @@
 
         *** What about images in CSS?
 
-    - IMMEDIATELY CHECK IF PLUGIN ACTUALLY WORKS 
+    - IMMEDIATELY CHECK IF PLUGIN ACTUALLY WORKS
 
-        AND REPORT THE POSSIBLE PROBLEMS, IF ANY 
-       
-        Pedro.Frota: 
+        AND REPORT THE POSSIBLE PROBLEMS, IF ANY
 
-        Long story short: since Adaptive Images works in such a transparent manner, one big question for users is 
+        Pedro.Frota:
+
+        Long story short: since Adaptive Images works in such a transparent manner, one big question for users is
         whether or not it is indeed working. IMHO a visual feedback is the best solution.
 
     - PERFORMANCE SERVICES CHECK
@@ -119,7 +119,7 @@
 
     - DOCUMENTATION
 
-      - tools which do not emulate a mobile screen cannot test the plugin results (Google pagespeed, YSlow, GTmetrix, 
+      - tools which do not emulate a mobile screen cannot test the plugin results (Google pagespeed, YSlow, GTmetrix,
         Pingdom)
 
       - one can use Firebug to debug by editing cookies from the cookies tab
@@ -165,7 +165,7 @@
       - WP Super Cache compatibility
 
     - VARIOUS
-    
+
       - Testing: set up functions in a way that the image generation can be tested.
       - Functions prefix "ai_".
       - WordPress 3.0 and down allow the "+"" character in filenames.
@@ -177,7 +177,7 @@
       - This plugin has server XXX images successfully
       - This plugin happily serves XXX images from its cache
       - This plugin happily serves XXmb from its cache
-    
+
 
 
   Responsive image art direction
@@ -188,7 +188,7 @@
       1. zoom level 1, 2, 3...
       2. anchor in image
 
-        ---------------- 
+        ----------------
         | tl   tc   tr |
         |              |
         | ml   mc   mr |
@@ -216,10 +216,10 @@
 
       location assets {
       }
-        
+
       location ai-cache { ==> *** THE CACHE DIR ***
       }
-        
+
       location / {
         rewrite \.(?:jpe?g|gif|png)$ /adaptive-images.php; ==> *** THE PHP SCRIPT ***
       }
@@ -268,7 +268,7 @@
   ============
 
   - Put the stylings in separate CSS files.
-  - Ask users to rate plugin after x-images have been cached. 
+  - Ask users to rate plugin after x-images have been cached.
   - Ajax calculate image cache size.
   - Ajax cleanup image cache size.
   - Report all folders and files in cache.
@@ -276,7 +276,7 @@
   - Purge image cache beyond a size.
   - Per breakpoint cache purge.
   - Notify about cache size in WP cron, in WP admin, perhaps an email to the admin.
-  - What if a user actually wants to see the full version of an image, even in a mobile network? 
+  - What if a user actually wants to see the full version of an image, even in a mobile network?
   - When an image is deleted in the media gallery then its resized versions should be deleted, too.
   - When breakpoints are changed delete the cache directories of the unused breakpoints to clean up.
   - Original adaptive images PHP script error log is output inside the plugin files.
@@ -300,7 +300,7 @@
   - Deactivate then activate
   - Version 0.2.08 upgrade
   - Older version upgrade
-  - Print debug info 
+  - Print debug info
   - Images correctly sent at each breakpoint
   - Uninstall cleanup
   - Images to test

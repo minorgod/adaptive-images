@@ -33,16 +33,15 @@
 
     function adaptive_images_script_get_url ( $use_forwarded_host=false ) {
 
-        $ssl         = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' );
+        $ssl         = ( ! empty( $_SERVER['HTTPS'] ) && strcasecmp( $_SERVER['HTTPS'], 'on' ) == 0 );
         $protocol    = strtolower( $_SERVER['SERVER_PROTOCOL'] );
         $protocol    = substr( $protocol, 0, strpos( $protocol, '/' ) ) . ( ( $ssl ) ? 's' : '' );
         $port        = $_SERVER['SERVER_PORT'];
         $port        = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':' . $port;
         $host        = ( $use_forwarded_host && isset( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : ( isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : null );
         $host        = isset( $host ) ? $host : $_SERVER['SERVER_NAME'] . $port;
-        $request_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
 
-        return $protocol . '://' . $host . $request_uri;
+        return $protocol . '://' . $host;
 
     }
 
@@ -66,7 +65,7 @@
 
 
 
-            // Default script settings which are set in the plugin settings page.
+            // Default script settings which are overriden by the user settings.
 
             $resolutions    = array( 1024, 600, 480 );
             $landscape      = TRUE;
@@ -98,8 +97,17 @@
 
             // Resolve original requested image path on disk. 
             
-            $request_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
-            $source_file = str_ireplace( $wp_content_url, $wp_content_dir, adaptive_images_script_get_url() );
+            $request_uri    = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+            $wp_content_url = preg_replace( '/^https?/',  '', $wp_content_url );
+            $url            = preg_replace( '/^https?/',  '', adaptive_images_script_get_url() . $request_uri );
+            $source_file    = str_ireplace( $wp_content_url, $wp_content_dir, $url );
+
+            // echo $request_uri . '<br/>';
+            // echo $wp_content_url . '<br/>';
+            // echo $wp_content_dir . '<br/>';
+            // echo $url . '<br/><br/>';
+            // echo $source_file . '<br/>';
+            // exit;
 
 
 

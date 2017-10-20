@@ -5,8 +5,8 @@ Contributors: nevma
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WCES7V9D45HDS
 Tags: adaptive images, responsive images, mobile images, resize images, optimize images, adaptive, responsive, mobile, resize, optimize, images
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 0.6.62
+Tested up to: 4.8
+Stable tag: 0.6.63
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,13 +19,9 @@ mobile environments.
 
 = Adaptive Images =
 
-Resizes and optimizes images delivered to mobile devices, in a transparent and unobtrusive way, so that the total 
-download time is dramatically reduced. It works as a filter between the device and your WordPress website. It actually 
-works for all types of device screen sizes, although it is targeted mostly at mobile environments. 
+Resizes and optimizes images delivered to mobile devices, in a transparent and unobtrusive way, so that the total download time is dramatically reduced. It works as a filter between the device and your WordPress website. It actually works for all types of device screen sizes, although it is targeted mostly at mobile environments. 
 
-Note that this is not a CSS responsive images solution. This plugin does not force browsers to render images as if they 
-were smaller. It actually sends smaller images to them! Then it is the job of the CSS to instruct the browsers how to 
-render them. 
+Note that this is not a CSS responsive images solution. This plugin does not force browsers to render images as if they were smaller. It actually sends smaller images to them! Then it is the job of the CSS to instruct the browsers how to render them. 
 
 = Fundamental goals = 
 
@@ -48,13 +44,9 @@ render them.
 
 = CDN/Varnish/external caching service support =
 
-Since version 0.6.0 CDN/Varnish/external caching service support has been added as an option, in an ***experimental*** 
-mode. This mode is experimental in the following ways: i) it is not thorougly tested yet ii) however, it works in 
-almost all test cases so far iii) it bears no dangers to your isntallation iv) it adds a special url parameter to your 
-image urls, so it is slightly obtrusive.
+Since version 0.6.0 CDN/Varnish/external caching service support has been added as an option, in an ***experimental*** mode. This mode is experimental in the following ways: i) it is not thorougly tested yet ii) however, it works in almost all test cases so far iii) it bears no dangers to your isntallation iv) it adds a special url parameter to your image urls, so it is slightly obtrusive.
 
-Cannot work, not even in experimental mode, with CDNs which use a different subdomain for images, because these setups
-completely bypass WordPress when delivering images. Feel free to ask for details on this in the support forum.
+Cannot work, not even in experimental mode, with CDNs which use a different subdomain for images, because these setups completely bypass WordPress when delivering images. Feel free to ask for details on this in the support forum.
 
 = Default breakpoints =
 
@@ -62,39 +54,28 @@ completely bypass WordPress when delivering images. Feel free to ask for details
  - 640px wide screens
  - 480px wide screens
 
-Since version 0.5.0 and upwards it is configurable whether the plugin should take into account the landscape or the 
-portrait orientation of each device.
+Since version 0.5.0 and upwards it is configurable whether the plugin should take into account the landscape or the portrait orientation of each device.
 
 HiDPI (high device pixel density or retina) screens are supported too.
 
 = How to test = 
 
- 1. Test with Chrome&apos;s device emulation mode https://developer.chrome.com/devtools/docs/device-mode in Developer 
-    Tools. See here https://www.youtube.com/watch?v=hCAC1XUUOvw/ for an example. Unfortunately, Firefox&apos;s 
-    Responsive Design Mode does not actually emulate a mobile screen size!
+ 1. Test with Chrome&apos;s device emulation mode https://developer.chrome.com/devtools/docs/device-mode in Developer Tools. See here https://www.youtube.com/watch?v=hCAC1XUUOvw/ for an example. Unfortunately, Firefox&apos;s Responsive Design Mode does not actually emulate a mobile screen size!
  2. Test with a tool like Webpagetest http://www.webpagetest.org/. Make sure you set the "Emulate Mobile Browser" 
     setting in the "Advanced Settings" > "Chrome" tab. 
- 3. Test with a tool like GTmetrix http://gtmetrix.com/. Make sure you enable mobile device testing. The plugin will 
-    have no effect on desktop sized devices.
+ 3. Test with a tool like GTmetrix http://gtmetrix.com/. Make sure you enable mobile device testing. The plugin will have no effect on desktop sized devices.
  4. Test with an actual mobile device, a smartphone or tablet. Watch your website load in a snap.
- 5. Check the `/wp-contents/cache` directory to see the `/adaptive-images` directory and its contents. This is where 
-    the resized images are kept and cached by default.
+ 5. Check the `/wp-contents/cache` directory to see the `/adaptive-images` directory and its contents. This is where the resized images are kept and cached by default.
 
 Also you can:
 
- 1. View an image straight from a browser and add a &quot;?debug=true&quot; at the end of the url like this 
-    &quot;http://www.website.com/wp-content/uploads/2015/01/image.jpg?debug=true&quot;. This should print useful debug
-    information about the plugin functions in your installation. If you keep seeing your image, then the plugin is not
-    working as it should and the cause is probably a failure to update the .htaccess file properly.
- 2. Add a &quot;?debug=original&quot; at the end of the url of an image and you will see the orginal version of the 
-    image even when a smaller version of it should have been shown.
- 3. Hit the &quot;Print debug&quot; and &quot;Print diagnostics&quot; buttons at the plugin settings page to see useful 
-    debug information about the plugin and your WordPress installation.
+ 1. View an image straight from a browser and add a &quot;?debug=true&quot; at the end of the url like this &quot;http://www.website.com/wp-content/uploads/2015/01/image.jpg?debug=true&quot;. This should print useful debug information about the plugin functions in your installation. If you keep seeing your image, then the plugin is not working as it should and the cause is probably a failure to update the .htaccess file properly.
+ 2. Add a &quot;?debug=original&quot; at the end of the url of an image and you will see the orginal version of the image even when a smaller version of it should have been shown.
+ 3. Hit the &quot;Print debug&quot; and &quot;Print diagnostics&quot; buttons at the plugin settings page to see useful debug information about the plugin and your WordPress installation.
 
-You could test with a normal desktop browser, but only if the computer screen size falls under at least of one of the 
-specified breakpoints!
+You could test with a normal desktop browser, but only if the computer screen size falls under at least of one of the specified breakpoints!
 
- = Incompatibilities and issues = 
+= Incompatibilities and issues = 
 
  - The plugin supports Nginx, but the server's configuration file must be manually configured like this:
    `location / {
@@ -105,33 +86,22 @@ specified breakpoints!
  - When using HTTPS/SSL make sure that you update all your website urls and also the urls in your WordPress General
    settings page, otherwise the plugin will not be able to locate your images. 
 
- = Stuff to keep in mind = 
+= Stuff to keep in mind = 
 
- - The plugin needs to add a little bit of code to your `.htaccess` file in order to function properly. It removes 
-   this code once disabled. If you are not cool with that, then&hellip; tough luck! 
- - The plugin does not care whether the device is actually mobile or not. It checks the device screen resolution. If 
-   you have set your breakpoints big enough then it should work just as good for desktop devices as well. However it targets mostly the mobile ones.
- - The resized versions of the pictures are kept in a special directory in the `/wp-content/cache` directory. This 
-   causes some storage overhead. It is up to you to judge whether this overhead is a sustainable option in your 
+ - The plugin needs to add a little bit of code to your `.htaccess` file in order to function properly. It removes this code once disabled. If you are not cool with that, then&hellip; tough luck! 
+ - The plugin does not care whether the device is actually mobile or not. It checks the device screen resolution. If you have set your breakpoints big enough then it should work just as good for desktop devices as well. However it targets mostly the mobile ones.
+ - The resized versions of the pictures are kept in a special directory in the `/wp-content/cache` directory. This causes some storage overhead. It is up to you to judge whether this overhead is a sustainable option in your 
    hosting environment.
- - The plugin does not help with (nor hinder) art direction. Simple as that. Art direction 
-   https://usecases.responsiveimages.org/#art-direction in responsive images is an entirely different, yet important, 
-   problem. This plugin does not tackle with it. But it works in a supplementary way without interfering with other 
-   solutions that do. This means that you can combine it with any art direction solution.
+ - The plugin does not help with (nor hinder) art direction. Simple as that. Art direction https://usecases.responsiveimages.org/#art-direction in responsive images is an entirely different, yet important, problem. This plugin does not tackle with it. But it works in a supplementary way without interfering with other solutions that do. This means that you can combine it with any art direction solution.
 
 = Credits = 
 
- - The plugin was originally based on the WP-Resolutions plugin https://github.com/JorgenHookham/WP-Resolutions/, but 
-   since version 0.3.0 it is a complete rewrite!
- - Both plugins - WP-Resolutions and this one - have borrowed ideas from the Adaptive Images http://adaptive-images.com/
-   solution specially adapted for WordPress.
- - Many-many thanks to "railgunner" for the initial idea in the forum and to the Pressidium team for helping with 
-   debugging the CDN/Varnish/external caching service feature.
- - Also, many thanks to my good friend and colleague Antonis Zachopoulos for the countless times that he provided ideas
-   and debugging hints.
+ - The plugin was originally based on the WP-Resolutions plugin https://github.com/JorgenHookham/WP-Resolutions/, but since version 0.3.0 it is a complete rewrite!
+ - Both plugins - WP-Resolutions and this one - have borrowed ideas from the Adaptive Images http://adaptive-images.com/ solution specially adapted for WordPress.
+ - Many-many thanks to "railgunner" for the initial idea in the forum and to the Pressidium team for helping with debugging the CDN/Varnish/external caching service feature.
+ - Also, many thanks to my good friend and colleague Antonis Zachopoulos for the countless times that he provided ideas and debugging hints.
 
-Thank you all for using and testing the plugin and, please, do let us know how it works (or doesn't work) for you. We 
-love comments and creative feedback!
+Thank you all for using and testing the plugin and, please, do let us know how it works (or doesn't work) for you. We love comments and creative feedback!
 
 
 
@@ -153,24 +123,15 @@ De-activate the plugin to disable it. Activate the plugin to enable it. Delete i
 
 = What's the story? =
 
-First came the Adaptive Images solution http://adaptive-images.com/ which is still there and works on its own. Then 
-came the WP-Resolutions plugin https://github.com/JorgenHookham/WP-Resolutions. But it is not in the WordPress plugin
-repository anymore and the Github version is not compatible with the latest WordPress versions. So we are updating and
-maintaining it. Many under the hood changes have taken place, but the overall functionality is the same.
+First came the Adaptive Images solution http://adaptive-images.com/ which is still there and works on its own. Then came the WP-Resolutions plugin https://github.com/JorgenHookham/WP-Resolutions. But it is not in the WordPress plugin repository anymore and the Github version is not compatible with the latest WordPress versions. So we are updating and maintaining it. Many under the hood changes have taken place, but the overall functionality is the same.
 
-Since version 0.5.0 the plugin has been completely rewritten, in order to not rely on the Adaptive Images solution, 
-which was released under a CC-BY license that is not compatible with the GPL. This problem has now been overcome and 
-the part that used to rely on the Adaptive Images is brand new!
+Since version 0.5.0 the plugin has been completely rewritten, in order to not rely on the Adaptive Images solution, which was released under a CC-BY license that is not compatible with the GPL. This problem has now been overcome and the part that used to rely on the Adaptive Images is brand new!
 
 = Is this plugin heavy? =
 
-Well, not much really. The image resizing process is not computationally negligible, but the images are only resized 
-when they are first requested and then they are cached. However, it must be noted that the images in the watched 
-directories, the ones the plugin is responsible for resizing and delivering, are ultimately delivered by a PHP script 
-and not a generic server process! 
+Well, not much really. The image resizing process is not computationally negligible, but the images are only resized when they are first requested and then they are cached. However, it must be noted that the images in the watched directories, the ones the plugin is responsible for resizing and delivering, are ultimately delivered by a PHP script and not a generic server process! 
 
-So actually one has to decide on a balance between creating and storing too many image sizes in contrast to burdening 
-their server resources. 
+So actually one has to decide on a balance between creating and storing too many image sizes in contrast to burdening their server resources. 
 
 
 
@@ -184,6 +145,10 @@ their server resources.
 
 
 == Upgrade Notice ==
+
+= 0.6.63 =
+
+Until this bug is fixed, please make sure that the protocol mentioned in the urls in your /wp-admin General > Settings (HTTP vs HTTPS)) is the same as the protocol of your website. 
 
 = 0.6.62 =
 
@@ -211,6 +176,11 @@ as intended. We try to minimize the hassle between these versions. This is not e
 
 
 == Changelog ==
+
+= 0.6.63 =
+
+ - Bug fix when HTTPS was reported as "On" vs "on" in PHP. Now the comparison is case insensitive.
+ - Bug fix to completely disregard request protocol (HTTP vs HTTPS) when resolving image paths from request urls. 
 
 = 0.6.62 =
 
