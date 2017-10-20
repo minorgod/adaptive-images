@@ -42,7 +42,7 @@ Note that this is not a CSS responsive images solution. This plugin does not for
 
 = CDN/Varnish/external caching service support =
 
-Since version 0.6.0 CDN/Varnish/external caching service support has been added as an option, in an ***experimental*** mode. This mode is experimental in the following ways: i) it is not thorougly tested yet ii) however, it works in almost all test cases so far iii) it bears no dangers to your isntallation iv) it adds a special url parameter to your image urls, so it is slightly obtrusive.
+Since version 0.6.0 CDN/Varnish/external caching service support has been added as an option, in an ***experimental*** mode. This mode is experimental in the following ways: i) it is not thorougly tested yet ii) however, it works in almost all test cases so far iii) it bears no dangers to your installation iv) it adds a special url parameter to your image urls, so it is slightly obtrusive.
 
 Cannot work, not even in experimental mode, with CDNs which use a different subdomain for images, because these setups completely bypass WordPress when delivering images. Feel free to ask for details on this in the support forum.
 
