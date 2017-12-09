@@ -18,6 +18,7 @@
     
     define( 'SILENCE', FALSE );
 
+    require("../../../wp-config.php");
 
 
     /**
@@ -40,8 +41,9 @@
         $port        = ( ( ! $ssl && $port=='80' ) || ( $ssl && $port=='443' ) ) ? '' : ':' . $port;
         $host        = ( $use_forwarded_host && isset( $_SERVER['HTTP_X_FORWARDED_HOST'] ) ) ? $_SERVER['HTTP_X_FORWARDED_HOST'] : ( isset( $_SERVER['HTTP_HOST'] ) ? $_SERVER['HTTP_HOST'] : null );
         $host        = isset( $host ) ? $host : $_SERVER['SERVER_NAME'] . $port;
+        $request_uri = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
 
-        return $protocol . '://' . $host;
+        return $protocol . '://' . $host . $request_uri;
 
     }
 
@@ -70,7 +72,7 @@
             $resolutions    = array( 1024, 600, 480 );
             $landscape      = TRUE;
             $hidpi          = TRUE;
-            $wp_content_dir = realpath( $current_directory . '/../../' );
+            $wp_content_dir = wp_normalize_path(realpath( $current_directory . '/../../' ));
             $wp_content_url = 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content';
             $cache_dir      = "cache/adaptive-images";
             $jpg_quality    = 65;
@@ -99,7 +101,7 @@
             
             $request_uri    = parse_url( urldecode( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
             $wp_content_url = preg_replace( '/^https?/',  '', $wp_content_url );
-            $url            = preg_replace( '/^https?/',  '', adaptive_images_script_get_url() . $request_uri );
+            $url            = preg_replace( '/^https?/',  '', adaptive_images_script_get_url()  );
             $source_file    = str_ireplace( $wp_content_url, $wp_content_dir, $url );
 
             // echo $request_uri . '<br/>';

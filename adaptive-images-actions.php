@@ -134,14 +134,19 @@
         $request_uri_base = substr( $request_uri, 0, strpos( $request_uri, '/wp-admin', 1 ) );
 
         // Isolate the relative path of the adaptive images PHP script inside the WordPress installation directory.
-        
+        //this returns the home path with windoze back-slashes converted to unix forward-slashes
         $wp_home_path = get_home_path();
 
-        $wp_home_path = preg_replace( '/\//i', '\/', $wp_home_path );
-        $wp_home_path = preg_replace( '/\./i', '\\.', $wp_home_path );
+        //this is the wrong way to remove regex meta characters...use preg_quote instead (see $pattern below)
+        //$wp_home_path = preg_replace( '/\//i', '\/', $wp_home_path );
+        //$wp_home_path = preg_replace( '/\./i', '\\.', $wp_home_path );
         
-        $adaptive_images_dir_path          = dirname( __FILE__ );
-        $adaptive_images_dir_path_relative = preg_replace( '/' . $wp_home_path . '/i', '', $adaptive_images_dir_path );
+        //need to normalize the path to flip the slashes in windoze paths
+        $adaptive_images_dir_path          = wp_normalize_path(dirname( __FILE__ ));
+
+        //now remove the wp_home_path to get the relative dir path
+        $pattern = '/'. preg_quote($wp_home_path,"/") . '/i';
+        $adaptive_images_dir_path_relative = preg_replace( $pattern, '', $adaptive_images_dir_path );
 
         $adaptive_images_php_script = ( $request_uri_base != '' ? $request_uri_base : '' ) . '/' . $adaptive_images_dir_path_relative . '/adaptive-images-script.php';
 

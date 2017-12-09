@@ -1079,7 +1079,7 @@
 
         // Add the /wp-content directory path and web url to the settings.
         
-        $data['wp-content-dir'] = WP_CONTENT_DIR;
+        $data['wp-content-dir'] = wp_normalize_path(WP_CONTENT_DIR);
         $data['wp-content-url'] = WP_CONTENT_URL;
 
 
