@@ -5,8 +5,8 @@ Contributors: nevma
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WCES7V9D45HDS
 Tags: adaptive images, responsive images, mobile images, resize images, optimize images, adaptive, responsive, mobile, resize, optimize, images
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 0.6.63
+Tested up to: 4.9
+Stable tag: 0.6.64
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,7 @@ You could test with a normal desktop browser, but only if the computer screen si
  - The plugin was originally based on the WP-Resolutions plugin https://github.com/JorgenHookham/WP-Resolutions/, but since version 0.3.0 it is a complete rewrite!
  - Both plugins - WP-Resolutions and this one - have borrowed ideas from the Adaptive Images http://adaptive-images.com/ solution specially adapted for WordPress.
  - Many-many thanks to "railgunner" for the initial idea in the forum and to the Pressidium team for helping with debugging the CDN/Varnish/external caching service feature.
+ - Thanks to "minorgod" for the Windows path fix.
  - Also, many thanks to my good friend and colleague Antonis Zachopoulos for the countless times that he provided ideas and debugging hints.
 
 Thank you all for using and testing the plugin and, please, do let us know how it works (or doesn't work) for you. We love comments and creative feedback!
@@ -146,7 +147,7 @@ So actually one has to decide on a balance between creating and storing too many
 
 = 0.6.63 =
 
-Until this bug is fixed, please make sure that the protocol mentioned in the urls in your /wp-admin General > Settings (HTTP vs HTTPS)) is the same as the protocol of your website. 
+The bug concerning the protocol (HTTP vs HTTPS) of the urls in your /wp-admin General > Settings being being the same as the protocol of your website has been fixed. 
 
 = 0.6.62 =
 
@@ -168,6 +169,10 @@ Apologies for the inconvenience! We are still in early versions. What is importa
 
 
 == Changelog ==
+
+= 0.6.64 =
+
+ - Windows path fix (thanks to @minorgod). 
 
 = 0.6.63 =
 
